@@ -28,7 +28,7 @@ public class Users implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "fullname")
+    @Column(name = "full_name")
     private String fullName;
 
     @ManyToMany(fetch = FetchType.EAGER)

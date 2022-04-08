@@ -10,6 +10,6 @@ import javax.transaction.Transactional;
 @Transactional
 public interface RolesRepository extends JpaRepository<Roles, Long> {
 
-
+    Roles findByRole(String role);
 
 }

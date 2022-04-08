@@ -20,8 +20,8 @@
                     <li><a class="menu-bottom" th:href="@{'/'}">Партнеры</a></li>
                     <li sec:authorize="isAnonymous()"><a class="login-bottom " th:href="@{'/signin'}">Sign in</a></li>
                     <li sec:authorize="isAuthenticated()"><a class="login-bottom " href="JavaScript:void(0)" onclick="signOut()">Sign Out </a></li>
-                    <li sec:authorize="isAnonymous()"><a class="register-bottom" th:href="@{'/'}">Register</a></li>
-                    <li sec:authorize="isAuthenticated()"><a class="menu-bottom" th:href="@{'/profile'}" th:text="${currentUser.fullName}"></a></li>
+                    <li sec:authorize="isAnonymous()"><a class="register-bottom" th:href="@{'/signup'}">Register</a></li>
+                    <li sec:authorize="isAuthenticated()"><a class="menu-bottom" th:href="@{'/profile'}" th:text="${currentUser.fullName!=null?currentUser.fullName:''}"></a></li>
                 </ul>
             </div>
         </div>
