@@ -84,4 +84,17 @@ public class MainController {
         }
         return null;
     }
+
+    @PostMapping("/updatepassword")
+    @PreAuthorize("isAuthenticated()")
+    public String updatePassword(@RequestParam(name = "old_password")String old_Pass,
+                                 @RequestParam(name = "new_password")String newPass,
+                                 @RequestParam(name = "retype_new_password")String reNewPass){
+        if(newPass.equals(reNewPass)){
+            if(userService.updatePassword(getUser(),old_Pass,newPass)){
+                return "redirect:/profile?success";
+            }
+        }
+        return "redirect:/profile?error";
+    }
 }
