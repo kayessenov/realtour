@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Tour</title>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/style.css'}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar-menu">
+            <img class="logo" th:src="@{'img/logor.png'}" alt="logo">
+            <div class="menu-bottoms">
+                <ul>
+                    <li><a class="menu-bottom active" th:href="@{'/'}">Главная</a></li>
+                    <li><a class="menu-bottom" th:href="@{'/'}">Туры</a></li>
+                    <li><a class="menu-bottom" th:href="@{'/'}">О нас</a></li>
+                    <li><a class="menu-bottom" th:href="@{'/'}">Партнеры</a></li>
+                    <li sec:authorize="isAnonymous()"><a class="login-bottom " th:href="@{'/signin'}">Sign in</a></li>
+                    <li sec:authorize="isAuthenticated()"><a class="login-bottom " href="JavaScript:void(0)" onclick="signOut()">Sign Out </a></li>
+                    <li sec:authorize="isAnonymous()"><a class="register-bottom" th:href="@{'/'}">Register</a></li>
+                    <li sec:authorize="isAuthenticated()"><a class="menu-bottom" th:href="@{'/profile'}" th:text="${currentUser.fullName}"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div layout:fragment="mainContainer">
+
+</div>
+</body>
+<form th:action="@{'/signout'}" method="post" id="signOutFormId" sec:authorize="isAuthenticated()">
+
+</form>
+<script type="text/javascript" sec:authorize="isAuthenticated()">
+    function signOut(){
+        document.getElementById("signOutFormId").submit();
+    }
+</script>
+<script type="text/javascript" th:src="@{'/js/main.js'}"></script>
+</html>

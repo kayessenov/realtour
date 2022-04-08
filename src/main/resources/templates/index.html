@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
+<body>
+<div layout:fragment="mainContainer">
+<section>
+    <div class="container">
+        <div class="first-page">
+            <div class="first-page-text">
+                <h1 class="first-page-title">
+                    Исследуйте и <br> путешествуйте
+                </h1>
+                <h2 class="holiday-finder">
+                    Искатель отдыха
+                </h2>
+                <hr class="page-hr">
+                <div class="first-inputs">
+                    <select name="" id="">
+                        <option value="">Страна : </option>
+                    </select>
+                    <input type="date" name="" id="calendar">
+                </div>
+                <div class="second-inputs">
+                    <select name="" id="">
+                        <option value="">Длительность :</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Туристы :</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="explore">Искать</button>
+                </div>
+            </div>
+            <img th:src="@{'img/first-fon.png'}" alt="first-page-fon" class="first-page-fon">
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="second-page">
+            <img th:src="@{'img/second-fon.png'}" alt="second-page-fon" class="second-page-fon">
+            <div class="second-block-second-page">
+                <h1 class="second-page-title">
+                    Новый способ <br>исследовать мир
+                </h1>
+                <h3 class="second-page-description">
+                    На протяжении десятилетий путешественники тянулись к книгам Lonely Planet, когда хотели спланировать и осуществить свое идеальное путешествие, но теперь они также могут позволить опыту Lonely Planet проложить путь.
+                </h3>
+                <button class="learn-more">Узнать больше</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="third-page">
+            <h2 class="third-page-title">
+                Рекомендуемые направления
+            </h2>
+            <p class="view-more">
+                Еще <span class="arrow">></span>
+            </p>
+        </div>
+        <div class="destination-images">
+            <div class="foto-text">
+                <img class="dest-image" th:src="@{'img/1.png'}" alt="first-foto">
+                <div class="text">
+                    <h3 class="foto-description">Raja Ampat<span class="descrip"><br>Индонезия</span></h3>
+                </div>
+            </div>
+            <div class="foto-text">
+                <img class="dest-image" th:src="@{'img/2.png'}" alt="second-foto">
+                <div class="text">
+                    <h3 class="foto-description">Fanjingshan<span class="descrip"><br>Китай</span></h3>
+                </div>
+            </div>
+            <div class="foto-text">
+                <img class="dest-image" th:src="@{'img/3.png'}" alt="third-foto">
+                <div class="text">
+                    <h3 class="foto-description">Vevey<span class="descrip"><br>Швейцария</span></h3>
+                </div>
+            </div>
+            <div class="foto-text">
+                <img class="dest-image" th:src="@{'img/4.png'}" alt="fourth-foto">
+                <div class="text">
+                    <h3 class="foto-description">Skadar<span class="descrip"><br>Черногория</span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="fourth-page">
+            <div class="fourth-page-content">
+                <h3 class="fourt-page-title">Путеводитель у вас <br> в приложении </h3>
+                <p class="fourth-page-desc">Наше приложение-путеводитель по городу, наполненное советами и советами от наших экспертов на местах, является незаменимым ресурсом до и во время поездки.</p>
+                <button class="fourth-page-button">Загрузить</button>
+            </div>
+            <img th:src="@{'img/fourth-fon.png'}" alt="fourth-page-fon" class="fourth-page-fon">
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div class="fifth-page">
+            <div class="fifth-page-titles">
+                <h3 class="fifth-page-title">
+                    Актуальные истории
+                </h3>
+                <p class="view-more" id="fifth-page-more">
+                    Еще <span class="arrow">></span>
+                </p>
+            </div>
+            <div class="fifth-page-content">
+                <div class="fifth-content">
+                    <img class="fifth-content-image" th:src="@{'img/51.png'}" alt="fifth-content-image">
+                    <h3>Многие преимущества взять лечебный отпуск</h3>
+                    <p class="fifth-content-desc">«Лечебные каникулы» набирают популярность чтобы помочь максимизировать ваше здоровье ...</p>
+                    <a class="read-more" href="#">Подробнее<span class="first-dot">.</span>.</a>
+                </div>
+                <div class="fifth-content">
+                    <img class="fifth-content-image" th:src="@{'img/52.png'}" alt="fifth-content-image">
+                    <h3>Лучший ресторан Киото попробовать японскую еду</h3>
+                    <p class="fifth-content-desc">От тофу до чайных – вот наш путеводитель по лучшим ресторанам Киото посетить...</p>
+                    <a class="read-more" href="#">Подробнее<span class="first-dot">.</span>.</a>
+                </div>
+                <div class="fifth-content">
+                    <img class="fifth-content-image" th:src="@{'img/53.png'}" alt="fifth-content-image">
+                    <h3>Пропустить Чичен-Ицу и посетить далекий Юкатан</h3>
+                    <p class="fifth-content-desc">Это далеко и сложно получить, но бросая вызов джунглям и исследуя эти руины без...</p>
+                    <a class="read-more" href="#">Подробнее<span class="first-dot">.</span>.</a>
+                </div>
+                <div class="fifth-content">
+                    <img class="fifth-content-image" th:src="@{'img/54.png'}" alt="fifth-content-image">
+                    <h3>Серфинг у этих новичков пятна по всему миру</h3>
+                    <p class="fifth-content-desc">Если вам нужно научиться серфингу, сделать свое время полезней, хорошие новости ...</p>
+                    <a class="read-more" href="#">Подробнее<span class="first-dot">.</span>.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-menu">
+            <div class="columns">
+                <div class="first-column" id="column">
+                    <img th:src="@{'img/logor.png'}" alt="footer-logo" class="footer-logo">
+                    <p class="first-column-desc">Спланируйте и забронируйте свое идеальное путешествие с советы экспертов, советы путешественникам информация от нас</p>
+                    <p class="first-column-descc">© 2022. Все права защищены</p>
+                </div>
+                <div id="column">
+                    <h3 class="column-title">Направления</h3>
+                    <p class="column-desc">Африка</p>
+                    <p class="column-desc">Антарктида</p>
+                    <p class="column-desc">Азия</p>
+                    <p class="column-desc">Европа</p>
+                    <p class="column-desc">Америка</p>
+                </div>
+                <div id="column">
+                    <h3 class="column-title">Покупка</h3>
+                    <p class="column-desc">Путеводитель</p>
+                    <p class="column-desc">Подарки</p>
+                    <p class="column-desc">Предложения</p>
+                    <p class="column-desc">Время доставки</p>
+                    <p class="column-desc">FAQs</p>
+                </div>
+                <div id="column">
+                    <h3 class="column-title">Интересы</h3>
+                    <p class="column-desc">Путешествие</p>
+                    <p class="column-desc">Дикая природа</p>
+                    <p class="column-desc">Семейный отдых</p>
+                    <p class="column-desc">Еда и напитки</p>
+                    <p class="column-desc">Искусство</p>
+                </div>
+            </div>
+            <hr class="hr">
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>
