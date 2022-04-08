@@ -3,5 +3,8 @@
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
 <body>
+<div layout:fragment="mainContainer">
+<div>Hello </div><div th:text="${currentUser.fullName}" style="color: #202333"></div>
+</div>
 </body>
 </html>
