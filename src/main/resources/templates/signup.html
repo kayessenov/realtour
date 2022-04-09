@@ -12,7 +12,7 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-top: 250px;">
     <form class="form-signin" method="post" th:action="@{'/tosignup'}">
         <h2 class="form-signin-heading">Please sign up</h2>
         <p>
@@ -32,7 +32,8 @@
             <input type="text"  name="user_fullName" class="form-control" placeholder="Full name" required>
         </p>
         <input name="_csrf" type="hidden" value="1ac4c8eb-fadb-4a72-91eb-ea5aed337fe9" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <a th:href="@{'/signin'}" class="nav-link link-dark px-2 mt-2" style="text-align: center" type="submit">Login</a>
     </form>
 </div>
 </body></html>

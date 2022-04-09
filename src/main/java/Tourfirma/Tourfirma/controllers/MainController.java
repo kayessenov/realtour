@@ -1,6 +1,9 @@
 package Tourfirma.Tourfirma.controllers;
 
+import Tourfirma.Tourfirma.entities.Roles;
 import Tourfirma.Tourfirma.entities.Users;
+import Tourfirma.Tourfirma.repositories.RolesRepository;
+import Tourfirma.Tourfirma.repositories.UserRepository;
 import Tourfirma.Tourfirma.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -14,12 +17,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 @Controller
 public class MainController {
 
     @Lazy
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @GetMapping(value = "/")
     public String index(Model model)
@@ -83,6 +96,38 @@ public class MainController {
             return (Users) authentication.getPrincipal();
         }
         return null;
+    }
+
+    @PostMapping("/getadmin")
+    public String setAdmin(@RequestParam(name = "user_email_admin")String email, Model model){
+        Users currentUser = getUser();
+//        boolean isAdmin = false;
+//        assert currentUser != null;
+//        for(Roles role : currentUser.getRoles()){
+//            if (role.getRole().equals("ROLE_ADMIN")) {
+//                isAdmin = true;
+//                break;
+//            }
+//        }
+//        if(!isAdmin){
+//            System.out.println("The current user is not an admin!");
+//            return "redirect:/";
+//        }
+        Users userToDest = userRepository.findByEmail(email);
+        if(userToDest == null){
+            System.out.println("Cannot find user with this email!");
+            return "redirect:/admin";
+        }
+        if(Objects.equals(userToDest.getEmail(), currentUser.getEmail())){
+            System.out.println("Just you cannot!!");
+            return "redirect:/admin";
+        }
+        List<Roles> roles = userToDest.getRoles();
+        roles.add(rolesRepository.findByRole("ROLE_ADMIN"));
+        userToDest.setRoles(roles);
+        userRepository.deleteById(userToDest.getId());
+        userRepository.save(userToDest);
+        return "redirect:/";
     }
 
     @PostMapping("/updatepassword")

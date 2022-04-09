@@ -3,14 +3,20 @@
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
 <body>
-<form method="post" th:action="@{'/getadmin'}"></form>
+<div layout:fragment="mainContainer">
+<form method="post" th:action="@{'/getadmin'}">
 <div>
     <label>Email:</label>
-    <input type="text" name="user_email_admin">
+    <input type="text" name="user_email_admin" required>
 </div>
 <div>
     <label>Admin: </label>
-    <input type="checkbox" name="adminka">
+    <input type="checkbox" name="user_role_admin" required>
+</div>
+    <div>
+        <button>SUBMIT</button>
+    </div>
+</form>
 </div>
 </body>
 </html>

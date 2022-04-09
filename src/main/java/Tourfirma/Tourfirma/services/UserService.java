@@ -7,5 +7,5 @@ public interface UserService extends UserDetailsService {
 
     Users registerUser(Users user);
     boolean updatePassword(Users user, String oldPassword, String newPassword);
-
+//    boolean getAdmin(Users user, boolean adminka,String user_email_admin);
 }

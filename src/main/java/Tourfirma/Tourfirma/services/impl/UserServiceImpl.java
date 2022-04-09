@@ -6,10 +6,8 @@ import Tourfirma.Tourfirma.repositories.RolesRepository;
 import Tourfirma.Tourfirma.repositories.UserRepository;
 import Tourfirma.Tourfirma.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -68,4 +66,15 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+//    @Override
+//    public boolean getAdmin(Users user, boolean adminka, String user_email_admin) {
+//        Users checkUser = userRepository.findByEmail(user.getEmail());
+//
+//        if(checkUser!=null) {
+//                Roles roleUser = rolesRepository.findByRole("ROLE_ADMIN");
+//                return true;
+//            }
+//        return false;
+//    }
 }
