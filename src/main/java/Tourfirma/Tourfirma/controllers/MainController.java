@@ -131,7 +131,6 @@ public class MainController {
     }
 
     @PostMapping("/updatepassword")
-    @PreAuthorize("isAuthenticated()")
     public String updatePassword(@RequestParam(name = "old_password")String old_Pass,
                                  @RequestParam(name = "new_password")String newPass,
                                  @RequestParam(name = "retype_new_password")String reNewPass){

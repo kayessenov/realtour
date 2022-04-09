@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th = "http://www.thymeleaf.org"
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Tour</title>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/css/bootstrap.css'}">
+</head>
 <body>
-<div layout:fragment="mainContainer">
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a th:href="@{'/'}" class="nav-link px-2 link-dark">Главная</a></li>
+                <li><a th:href="@{'/'}" class="nav-link px-2 link-dark">Туры</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/admin'}" class="nav-link px-2 link-dark">Админ панель</a></li>
+                <li><a th:href="@{'/profile'}" class="nav-link px-2 link-dark">Профиль</a></li>
+                <li><a class="nav-link px-2 link-dark" href="JavaScript:void(0)" onclick="signOut()">Выйти</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<form th:action="@{'/signout'}" method="post" id="signOutFormId">
+
+</form>
+<script type="text/javascript">
+    function signOut(){
+        document.getElementById("signOutFormId").submit();
+    }
+</script>
+<div class="row-cols-3">
+    <div class="col-5 mx-auto">
 <form method="post" th:action="@{'/getadmin'}">
-<div>
+<div class="form-group mt-3">
     <label>Email:</label>
-    <input type="text" name="user_email_admin" required>
+    <input type="text" name="user_email_admin" class="form-control mt-3" required>
+    <input type="checkbox" name="user_role_admin" class="form-check-input mt-3" required>
 </div>
-<div>
-    <label>Admin: </label>
-    <input type="checkbox" name="user_role_admin" required>
-</div>
-    <div>
-        <button>SUBMIT</button>
+    <div class="form-group mt-3">
+        <button class="btn btn-success">SUBMIT</button>
     </div>
 </form>
+    </div>
+</div>
 </div>
 </body>
 </html>

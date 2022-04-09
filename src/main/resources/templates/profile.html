@@ -1,32 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th = "http://www.thymeleaf.org"
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Real-Tour</title>
+        <link rel="stylesheet" type="text/css" th:href="@{'/css/css/bootstrap.css'}">
+    </head>
 <body>
-<div layout:fragment="mainContainer">
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a th:href="@{'/'}" class="nav-link px-2 link-dark">Главная</a></li>
+                <li><a th:href="@{'/'}" class="nav-link px-2 link-dark">Туры</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a th:href="@{'/admin'}" class="nav-link px-2 link-dark">Админ панель</a></li>
+                <li><a th:href="@{'/profile'}" class="nav-link px-2 link-dark">Профиль</a></li>
+                <li><a class="nav-link px-2 link-dark" href="JavaScript:void(0)" onclick="signOut()">Выйти</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<form th:action="@{'/signout'}" method="post" id="signOutFormId">
+
+</form>
+<script type="text/javascript">
+    function signOut(){
+        document.getElementById("signOutFormId").submit();
+    }
+</script>
+<div class="row">
+    <div class="col-6 mx-auto">
 <form th:action="@{'/updatepassword'}" method="post">
-    <div>
+    <div class="form-group mt-3">
         <label>
             OLD PASSWORD
         </label>
-        <input type="password" name="old_pasword" required>
+        <input type="password" name="old_pasword" class="form-control" required>
     </div>
-    <div>
+    <div class="form-group mt-3">
         <label>
             NEW PASSWORD
         </label>
-        <input type="password" name="new_password" required>
+        <input type="password" name="new_password" class="form-control" required>
     </div>
-    <div>
+    <div class="form-group mt-3">
         <label>
             RETYPE NEW PASSWORD
         </label>
-        <input type="password" name="retype_new_password" required>
+        <input type="password" name="retype_new_password" class="form-control" required>
     </div>
-    <div>
-        <button>UPDATE PASSWORD</button>
+    <div class="form-group mt-3">
+        <button class="btn btn-success">UPDATE PASSWORD</button>
     </div>
 </form>
+    </div>
 </div>
+</div>
+
+<script type="text/javascript" th:src="@{'/js/js/bootstrap.js'}"></script>
 </body>
+
 </html>
