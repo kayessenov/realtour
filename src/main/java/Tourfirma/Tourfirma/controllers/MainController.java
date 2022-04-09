@@ -125,7 +125,7 @@ public class MainController {
         List<Roles> roles = userToDest.getRoles();
         roles.add(rolesRepository.findByRole("ROLE_ADMIN"));
         userToDest.setRoles(roles);
-        userRepository.deleteById(userToDest.getId());
+//        userRepository.deleteById(userToDest.getId());
         userRepository.save(userToDest);
         return "redirect:/";
     }
